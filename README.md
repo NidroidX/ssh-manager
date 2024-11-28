@@ -12,6 +12,7 @@ without having to remember ip/hosts, ports , etc.
 
 ## Requirements
 - SSH Client
+- sshpass
 - Bash (version 4.0 or later)
 
 ## Installation
