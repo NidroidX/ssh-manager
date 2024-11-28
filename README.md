@@ -22,21 +22,27 @@ without having to remember ip/hosts, ports , etc.
 git clone https://github.com/itachi1621/ssh-manager.git 
 
 ```
-2. Move into the cloned directory with 
+2. Install sshpass 
+ 
+```
+sudo apt install sshpass 
+
+```
+3. Move into the cloned directory with 
 
 ``` 
 
 cd ssh-manager
 
 ```
-3. Make the script executable with
+4. Make the script executable with
 
 ``` 
 
 chmod +x ssh-manager.sh
 
 ```
-4. Execute the script using
+5. Execute the script using
 
 ``` 
 
@@ -92,6 +98,8 @@ sudo cp ssh-manager.sh /usr/local/bin/ssh-manager
 
 ## Tested On
 
+- Ubuntu Server 24.04 LTS
+- Ubuntu 24.04 LTS
 - Ubuntu Server 22.04 LTS
 - Ubuntu 22.04 LTS
 - Ubuntu Server 20.04 LTS
