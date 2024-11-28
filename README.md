@@ -25,6 +25,7 @@ git clone https://github.com/itachi1621/ssh-manager.git
 2. Install sshpass 
  
 ```
+
 sudo apt install sshpass 
 
 ```
