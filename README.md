@@ -20,7 +20,7 @@ without having to remember ip/hosts, ports , etc.
 1. Clone the repository: 
 ``` 
 
-git clone https://github.com/itachi1621/ssh-manager.git 
+git clone https://github.com/NidroidX/ssh-manager.git 
 
 ```
 2. Install sshpass 
