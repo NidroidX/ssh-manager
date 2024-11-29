@@ -13,6 +13,7 @@ without having to remember ip/hosts, ports , etc.
 ## Requirements
 - SSH Client
 - sshpass
+- fzf
 - Bash (version 4.0 or later)
 
 ## Installation
@@ -23,11 +24,11 @@ without having to remember ip/hosts, ports , etc.
 git clone https://github.com/NidroidX/ssh-manager.git 
 
 ```
-2. Install sshpass 
+2. Install requirements
  
 ```
 
-sudo apt install sshpass 
+sudo apt install sshpass fzf 
 
 ```
 3. Move into the cloned directory with 
