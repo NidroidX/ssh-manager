@@ -9,6 +9,7 @@ without having to remember ip/hosts, ports , etc.
 - Add new SSH connections.
 - Edit exsisting SSH connections
 - Delete old SSH connections.
+- Search saved connection and fast connect
 
 ## Requirements
 - SSH Client
