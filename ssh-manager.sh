@@ -148,7 +148,7 @@ fi
 
 
 
- }
+}
 
 editServerUser(){
 
@@ -162,7 +162,7 @@ editServerUser(){
         user=$newUser
     fi
 
- }
+}
 addNewServerPassword(){
 
 
@@ -190,7 +190,7 @@ editServerPassword(){
         user=$newPassword
     fi
 
- }
+}
 
 
 addNewServerKeyFile(){
@@ -228,7 +228,7 @@ editServerKeyFile(){
         fi
     fi
 
- }
+}
 
 addNewServerOption(){
     read -p "Enter the options leave blank if not used: " option
@@ -239,7 +239,7 @@ editServerOption(){
 
     printf "Current option is %s \n " "$option"
     read -p "Enter the path to the key file or leave blank to use current option: " newOption
- }
+}
 
 
 createNewSSHCredentials(){
@@ -268,7 +268,7 @@ createNewSSHCredentials(){
 
     menu
 
- }
+}
 
  editSSHConnection(){
 
@@ -322,7 +322,7 @@ createNewSSHCredentials(){
 
 
 
- }
+}
 
 listSSHCredentials(){
     fileEmptyCheck
@@ -336,7 +336,41 @@ listSSHCredentials(){
 
     menu
 
- }
+}
+
+SSHSearchCredential(){
+    fileEmptyCheck
+    printf "%s${info}===========================${reset}\n"
+    echo -e "${info} Saved SSH Connections ${reset}"
+    printf "%s${info}===========================${reset}\n"
+    connection="$(cat $cfg_file_name | fzf)"
+
+    serverName=$(echo $connection | awk -F, '{print $1}')
+    serverIp=$(echo $connection | awk -F, '{print $2}')
+    serverPort=$(echo $connection | awk -F, '{print $3}')
+    serverUser=$(echo $connection | awk -F, '{print $4}')
+    serverPassword=$(echo $connection | awk -F, '{print $5}')
+    serverKeyFile=$(echo $connection | awk -F, '{print $6}')
+    serverOption=$(echo $connection | awk -F, '{print $7}')
+    echo "Option=$serverOption"
+
+    #echo $serverPort
+    #Here we go connecting to the server
+    printf "%s${success}Connecting to ${serverName} ...${reset}\n"
+    if [ -z $serverKeyFile ]
+    then
+        commande="sshpass -p "$serverPassword" ssh -p "$serverPort" "$serverUser""@""$serverIp" "$serverOption""
+        #echo $commande
+        $commande
+    else
+        commande="sshpass -p "$serverPassword" ssh -i "$serverKeyFile" -p "$serverPort" "$serverUser""@""$serverIp" "$serverOption""
+        #echo $commande
+        $commande
+    fi
+    menu
+
+
+}
 
 connectToSSHServer(){
 
@@ -413,7 +447,7 @@ fi
 
 
 
- }
+}
 
  deleteSSHServer(){
 
@@ -459,7 +493,7 @@ fi
     listSSHCredentials
 
 
- }
+}
 
  menu(){
 
@@ -468,20 +502,22 @@ fi
     printf "%s${info}===========================${reset}\n"
     printf "1. List Saved SSH connections \n"
     printf "2. Connect to a saved SSH connection \n"
-    printf "3. Add new SSH connection \n"
-    printf "4. Edit a saved SSH connection \n"
-    printf "%s${warning}5. Delete a saved SSH connection ${reset}\n"
-    printf "6. Exit\n"
-    printf "Enter your choice [1-6] : "
+    printf "3. Search and connect to a saved SSH connection \n"
+    printf "4. Add new SSH connection \n"
+    printf "5. Edit a saved SSH connection \n"
+    printf "%s${warning}6. Delete a saved SSH connection ${reset}\n"
+    printf "7. Exit\n"
+    printf "Enter your choice [1-7] : "
     read -p "" choice
 
     case $choice in
         1) listSSHCredentials;;
         2) connectToSSHServer;;
-        3) createNewSSHCredentials;;
-        4) editSSHConnection;;
-        5) deleteSSHServer;;
-        6) exit;;
+        3) SSHSearchCredential;;
+        4) createNewSSHCredentials;;
+        5) editSSHConnection;;
+        6) deleteSSHServer;;
+        7) exit;;
         *) printf "%s${warning}Invalid choice${reset}\n"; menu;;
     esac
 
