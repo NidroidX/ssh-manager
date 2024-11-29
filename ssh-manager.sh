@@ -357,16 +357,21 @@ SSHSearchCredential(){
     #echo $serverPort
     #Here we go connecting to the server
     printf "%s${success}Connecting to ${serverName} ...${reset}\n"
-    if [ -z $serverKeyFile ]
-    then
+    if [ ! -z $serverKeyFile ]
+    then 
+        commande="ssh -i "$serverKeyFile" -p "$serverPort" "$serverUser""@""$serverIp" "$serverOption""
+        #echo $commande
+        $commande
+    elif [ ! -z $serverPassword }
         commande="sshpass -p "$serverPassword" ssh -p "$serverPort" "$serverUser""@""$serverIp" "$serverOption""
         #echo $commande
         $commande
     else
-        commande="sshpass -p "$serverPassword" ssh -i "$serverKeyFile" -p "$serverPort" "$serverUser""@""$serverIp" "$serverOption""
+        commande="ssh -p "$serverPort" "$serverUser""@""$serverIp" "$serverOption""
         #echo $commande
         $commande
     fi
+
     menu
 
 
@@ -433,13 +438,17 @@ fi
     #echo $serverPort
     #Here we go connecting to the server
     printf "%s${success}Connecting to ${serverName} ...${reset}\n"
-    if [ -z $serverKeyFile ]
-    then
+    if [ ! -z $serverKeyFile ]
+    then 
+        commande="ssh -i "$serverKeyFile" -p "$serverPort" "$serverUser""@""$serverIp" "$serverOption""
+        #echo $commande
+        $commande
+    elif [ ! -z $serverPassword }
         commande="sshpass -p "$serverPassword" ssh -p "$serverPort" "$serverUser""@""$serverIp" "$serverOption""
         #echo $commande
         $commande
     else
-        commande="sshpass -p "$serverPassword" ssh -i "$serverKeyFile" -p "$serverPort" "$serverUser""@""$serverIp" "$serverOption""
+        commande="ssh -p "$serverPort" "$serverUser""@""$serverIp" "$serverOption""
         #echo $commande
         $commande
     fi
