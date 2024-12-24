@@ -357,12 +357,13 @@ SSHSearchCredential(){
     #echo $serverPort
     #Here we go connecting to the server
     printf "%s${success}Connecting to ${serverName} ...${reset}\n"
-    if [ ! -z $serverKeyFile ]
+    if [ ! -z $serverKeyFile ];
     then 
         commande="ssh -i "$serverKeyFile" -p "$serverPort" "$serverUser""@""$serverIp" "$serverOption""
         #echo $commande
         $commande
-    elif [ ! -z $serverPassword }
+    elif [ ! -z $serverPassword ];
+    then
         commande="sshpass -p "$serverPassword" ssh -p "$serverPort" "$serverUser""@""$serverIp" "$serverOption""
         #echo $commande
         $commande
