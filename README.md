@@ -13,6 +13,8 @@ without having to remember ip/hosts, ports , etc.
 ## Requirements
 - SSH Client
 - Bash (version 4.0 or later)
+- ssh-pass
+- fzf
 
 ## Installation
 
@@ -92,8 +94,10 @@ sudo cp ssh-manager.sh /usr/local/bin/ssh-manager
 
 ## Tested On
 
+- Ubuntu Server 24.04 LTS
 - Ubuntu Server 22.04 LTS
 - Ubuntu 22.04 LTS
+- Ubuntu 24.04 LTS
 - Ubuntu Server 20.04 LTS
 - Debian 12
 
